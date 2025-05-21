@@ -17,7 +17,7 @@ const routes = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				// 重定向到home页
+				// 访问"/"时 重定向到home页
 				loader: () => redirect("/home"),
 			},
 			{
