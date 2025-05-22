@@ -2,10 +2,11 @@ import React from 'react';
 import imgUrl from "../../assets/image/logo.png";
 import "./index.less";
 import {
-	Avatar,
+	Avatar, Button,
 	Dropdown,
 	Layout
 } from "antd";
+import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 
 const {Header} = Layout;
 
@@ -43,7 +44,7 @@ const HeaderLayout = () => {
 				position: 'relative'
 			}}
 		>
-			<div style={{flex: '1'}}>通用后台管理系统</div>
+			<Button shape="circle" style={{marginTop: '16px'}} icon={<MenuFoldOutlined/>}/>
 			<Dropdown menu={{items}}>
 				<Avatar src={imgUrl} size={50} gap={0} style={{marginTop: '7px', marginRight: '10px'}}/>
 			</Dropdown>

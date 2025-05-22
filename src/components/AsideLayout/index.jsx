@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Layout, Menu} from "antd";
 import {useNavigate} from "react-router";
 import asideItems from "../../assets/configs/asideConfig.jsx";
-import imgUrl from "../../assets/image/logo.png";
 
 const {Sider} = Layout;
 
@@ -12,12 +11,17 @@ const AsideLayout = () => {
 	let navigate = useNavigate();
 	
 	return (
-		<Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-			<img
-				style={{width: '100%', height: '58px'}}
-				src={imgUrl}
-				alt=""
-			/>
+		<Sider collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
+			<div style={{
+				width: '100%',
+				height: '58px',
+				lineHeight: '58px',
+				textAlign: 'center',
+				fontSize: '18px',
+				color: '#fff'
+			}}>
+				通用后台管理系统
+			</div>
 			<Menu
 				theme="dark"
 				defaultSelectedKeys={['1']}
