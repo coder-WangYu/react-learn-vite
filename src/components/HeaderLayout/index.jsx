@@ -7,6 +7,8 @@ import {
 	Layout
 } from "antd";
 import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
+import {switchMenuFold} from "../../store/reducers/menuFoldSlice.js";
+import {useDispatch, useSelector} from "react-redux";
 
 const {Header} = Layout;
 
@@ -31,6 +33,9 @@ const items = [
 ]
 
 const HeaderLayout = () => {
+	const isCollapsed = useSelector((state) => state.menuFold.isCollapsed);
+	const dispatch = useDispatch();
+	
 	return (
 		<Header
 			style={{
@@ -44,7 +49,12 @@ const HeaderLayout = () => {
 				position: 'relative'
 			}}
 		>
-			<Button shape="circle" style={{marginTop: '16px'}} icon={<MenuFoldOutlined/>}/>
+			<Button
+				shape="circle"
+				style={{marginTop: '16px'}}
+				icon={isCollapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+				onClick={() => dispatch(switchMenuFold())}
+			/>
 			<Dropdown menu={{items}}>
 				<Avatar src={imgUrl} size={50} gap={0} style={{marginTop: '7px', marginRight: '10px'}}/>
 			</Dropdown>

@@ -8,7 +8,7 @@ const menuFoldSlice = createSlice({
 	},
 	reducers: {
 		switchMenuFold: state => {
-			state.menuFold = !state.menuFold;
+			state.isCollapsed = !state.isCollapsed;
 		}
 	}
 })
