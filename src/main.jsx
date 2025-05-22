@@ -4,6 +4,7 @@ import App from './App.jsx'
 import "./assets/style/reset.css"
 import store from './store'
 import {Provider} from "react-redux";
+import './api/mock.js'
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>

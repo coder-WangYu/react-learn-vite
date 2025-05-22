@@ -25,7 +25,7 @@ class HttpRequest {
 	
 	request(options) {
 		const instance = axios.create({
-			baseURL: '',
+			baseURL: 'http://localhost:5173',
 			timeout: 1000,
 			headers: {},
 			...options

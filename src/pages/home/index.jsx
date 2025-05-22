@@ -1,13 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Card, Col, Row} from "antd";
 import imgUrl from "../../assets/image/logo.png";
 import "./index.less";
+import {getTableData} from "../../api/home/index.js";
 
 const Home = () => {
+	// 获取表格数据
+	useEffect(() => {
+		getTableData().then((res) => {
+			console.log(res);
+		})
+	}, []);
+	
 	return (
 		<div className='home-container'>
 			<Row>
+				{/* 左侧内容区域 */}
 				<Col span={8}>
+					{/* 用户信息 */}
 					<Card hoverable>
 						<div className="user-infos">
 							<div className='avator'>
@@ -30,7 +40,14 @@ const Home = () => {
 							</div>
 						</div>
 					</Card>
+					
+					{/* 表格区域 */}
+					<div className="tables">
+					
+					</div>
 				</Col>
+				
+				{/* 右侧内容区域 */}
 				<Col span={16}>
 					右侧内容区域
 				</Col>

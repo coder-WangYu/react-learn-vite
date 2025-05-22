@@ -1,13 +1,14 @@
 import http from "../axios.js";
 
-const getData = () => {
+// 获取左侧表格数据
+const getTableData = () => {
 	return http.request({
-		url: "/api/v1/getData",
+		url: "/home/getHomeTableData",
 		method: "get",
 		params: {}
 	})
 }
 
 export {
-	getData
+	getTableData
 }
