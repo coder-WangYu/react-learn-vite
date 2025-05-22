@@ -1,0 +1,49 @@
+.home-container {
+  .user-infos {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+
+    .avator {
+      min-width: 100px;
+      min-height: 100px;
+      width: 200px;
+      height: 200px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        clip-path: circle(50% at center);
+      }
+    }
+
+    .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    p {
+      padding-left: 40px;
+    }
+  }
+
+  .login-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .info-item {
+      display: flex;
+      justify-content: flex-start;
+      flex: 1;
+
+      p:last-of-type {
+        margin-left: 40px;
+      }
+    }
+  }
+}
