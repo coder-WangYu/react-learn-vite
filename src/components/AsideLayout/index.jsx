@@ -1,7 +1,7 @@
 import React from 'react';
 import {Layout, Menu} from "antd";
 import {useNavigate} from "react-router";
-import asideItems from "../../assets/configs/asideConfig.jsx";
+import asideItems from "../../configs/asideConfig.jsx";
 import {useSelector} from "react-redux";
 
 const {Sider} = Layout;
