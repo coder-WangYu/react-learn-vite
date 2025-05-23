@@ -5,6 +5,8 @@ import "./index.less";
 import {getTableData} from "../../api/home/index.js";
 import {homeTalbeColumn} from "../../configs/tableConfig.js";
 import {getIcons} from "../../configs/countConfig.jsx";
+import CustomEcharts from "../../components/CustomEcharts/index.jsx";
+import {setBarChartOption, setLineChartOption, setPieChartOption} from "../../configs/echartConfig.js";
 
 const Home = () => {
 	// 获取表格数据
@@ -54,6 +56,7 @@ const Home = () => {
 			
 			{/* 右侧内容区域 */}
 			<Col span={16} className="right-container">
+				{/* 卡片区域 */}
 				<div className="count-area">
 					{
 						countData.map(item => {
@@ -70,6 +73,15 @@ const Home = () => {
 							)
 						})
 					}
+				</div>
+				
+				{/* 图表区域 */}
+				<div className="chart-area">
+					<CustomEcharts style={{height: '300px', width: '100%'}} options={setLineChartOption()}/>
+					<div className="bottom-chart">
+						<CustomEcharts style={{height: '400px', width: '49%'}} options={setBarChartOption()}/>
+						<CustomEcharts style={{height: '400px', width: '49%'}} options={setPieChartOption()}/>
+					</div>
 				</div>
 			</Col>
 		</Row>
