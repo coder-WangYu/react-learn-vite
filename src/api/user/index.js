@@ -1,13 +1,13 @@
 import http from "../axios.js";
 
-const getData = () => {
+const getUserData = () => {
 	return http.request({
-		url: "/api/v1/getData",
+		url: "/user/getUserData",
 		method: "get",
 		params: {}
 	})
 }
 
 export {
-	getData
+	getUserData
 }

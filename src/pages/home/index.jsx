@@ -3,7 +3,7 @@ import {Card, Col, Row, Table} from "antd";
 import imgUrl from "../../assets/image/logo.png";
 import "./index.less";
 import {getTableData} from "../../api/home/index.js";
-import {homeTalbeColumn} from "../../configs/tableConfig.js";
+import {homeTalbeColumn} from "../../configs/tableConfig.jsx";
 import {getIcons} from "../../configs/countConfig.jsx";
 import CustomEcharts from "../../components/CustomEcharts/index.jsx";
 import {setBarChartOption, setLineChartOption, setPieChartOption} from "../../configs/echartConfig.js";
