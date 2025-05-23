@@ -1,4 +1,6 @@
 // 表格配置
+import {Button, Popconfirm, message} from "antd";
+
 const homeTalbeColumn = [
 	{
 		title: '姓名',
@@ -39,12 +41,39 @@ const userTalbeColumn = [
 		title: '地址',
 		dataIndex: 'address'
 	},
+	// 添加表格操作列
 	{
 		title: '操作',
-		key: 'operation',
-		fixed: 'right',
-		width: 100,
-		render: () => <a>action</a>,
+		render: (rowData) => {
+			function editItem(props) {
+				console.info(props);
+			}
+			
+			function deleteItem(props) {
+				console.info(props);
+			}
+			
+			return (
+				<>
+					<Button
+						style={{marginRight: "10px"}}
+						onClick={() => editItem(rowData)}
+					>
+						编辑
+					</Button>
+					<Popconfirm
+						title="Delete the task"
+						description="Are you sure to delete this task?"
+						onConfirm={() => deleteItem(rowData)}
+						onCancel={message.error('Click on No')}
+						okText="Yes"
+						cancelText="No"
+					>
+						<Button type='primary' danger>删除</Button>
+					</Popconfirm>
+				</>
+			)
+		}
 	}
 ]
 

@@ -9,15 +9,29 @@ import {userTalbeColumn} from "../../configs/tableConfig.jsx";
 const User = () => {
 	const [userData, setUserData] = useState([]);
 	
+	// 处理新增、编辑、删除功能
+	function tableAction(type, data) {
+		console.info(data)
+		switch (type) {
+			case 'add':
+				break
+			case 'edit':
+				break
+			case 'delete':
+				break
+		}
+	}
+	
+	// 处理查询功能
+	function onSearch() {
+		console.info('search');
+	}
+	
 	useEffect(() => {
 		getUserData().then((res) => {
 			setUserData(res.data.data.userData);
 		})
 	}, []);
-	
-	function onSearch() {
-		console.info('search');
-	}
 	
 	return (
 		<>
@@ -30,7 +44,12 @@ const User = () => {
 					size="large"
 					onSearch={onSearch}
 				/>
-				<Button type="primary" icon={<PlusOutlined/>} size='large'>
+				<Button
+					type="primary"
+					icon={<PlusOutlined/>}
+					size='large'
+					onClick={() => tableAction('add', '')}
+				>
 					新增
 				</Button>
 			</div>
