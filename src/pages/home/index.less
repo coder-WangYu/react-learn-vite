@@ -1,4 +1,6 @@
 .left-container {
+  min-width: 450px;
+
   .user-infos {
     display: flex;
     justify-content: flex-start;
@@ -43,6 +45,49 @@
 
       p:last-of-type {
         margin-left: 40px;
+      }
+    }
+  }
+}
+
+.right-container {
+  min-width: 970px;
+  padding-left: 20px;
+
+  .count-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card-item {
+      margin-bottom: 10px;
+      width: 33%;
+
+
+      .item-wrapper {
+        display: flex;
+        width: 100%;
+
+
+        .icon {
+          width: 30%;
+          font-size: 40px;
+          text-align: center;
+          background: aqua;
+          border-radius: 15px;
+        }
+
+        .infos {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-left: 20px;
+
+          div:first-child {
+            flex: 1;
+            font-size: 24px;
+          }
+        }
       }
     }
   }

@@ -16,6 +16,7 @@ const ContentLayout = () => {
 				style={{
 					padding: 24,
 					minHeight: 360,
+					minWidth: 1600,
 					height: '100%',
 					background: colorBgContainer,
 					borderRadius: borderRadiusLG,
