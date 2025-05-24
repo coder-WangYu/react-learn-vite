@@ -34,12 +34,19 @@ const User = () => {
 		{
 			title: '操作',
 			render: (rowData) => {
+				// 编辑功能
 				function editItem(props) {
 					console.info(props);
 				}
 				
-				function deleteItem(props) {
+				// 删除功能
+				function deleteItem(type, props) {
 					console.info(props);
+					if (type && type === 'confirm') {
+						message.success("删除成功！")
+					} else {
+						message.error("取消删除！")
+					}
 				}
 				
 				return (
@@ -51,12 +58,12 @@ const User = () => {
 							编辑
 						</Button>
 						<Popconfirm
-							title="Delete the task"
-							description="Are you sure to delete this task?"
-							onConfirm={() => deleteItem(rowData)}
-							onCancel={message.error('Click on No')}
-							okText="Yes"
-							cancelText="No"
+							title="删除数据"
+							description="是否要彻底删除这条数据？"
+							onConfirm={e => deleteItem('confirm', e)}
+							onCancel={e => deleteItem('cancel', e)}
+							okText="是"
+							cancelText="否"
 						>
 							<Button type='primary' danger>删除</Button>
 						</Popconfirm>
