@@ -1,13 +1,70 @@
 import React, {useEffect, useState} from 'react';
 import {getUserData} from "../../api/user";
-import {Button, Table} from "antd";
+import {Button, message, Popconfirm, Table} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import './index.less'
-import {userTalbeColumn} from "../../configs/tableConfig.jsx";
 
 const User = () => {
 	const [userData, setUserData] = useState([]);
+	
+	// 设置表头
+	const userTalbeColumn = [
+		{
+			title: '姓名',
+			dataIndex: 'name',
+		},
+		{
+			title: '年龄',
+			dataIndex: 'age',
+		},
+		{
+			title: '性别',
+			dataIndex: 'sex',
+		},
+		{
+			title: '出生年月',
+			dataIndex: 'birthDay',
+		},
+		{
+			title: '地址',
+			dataIndex: 'address'
+		},
+		// 添加表格操作列
+		{
+			title: '操作',
+			render: (rowData) => {
+				function editItem(props) {
+					console.info(props);
+				}
+				
+				function deleteItem(props) {
+					console.info(props);
+				}
+				
+				return (
+					<>
+						<Button
+							style={{marginRight: "10px"}}
+							onClick={() => editItem(rowData)}
+						>
+							编辑
+						</Button>
+						<Popconfirm
+							title="Delete the task"
+							description="Are you sure to delete this task?"
+							onConfirm={() => deleteItem(rowData)}
+							onCancel={message.error('Click on No')}
+							okText="Yes"
+							cancelText="No"
+						>
+							<Button type='primary' danger>删除</Button>
+						</Popconfirm>
+					</>
+				)
+			}
+		}
+	]
 	
 	// 处理新增、编辑、删除功能
 	function tableAction(type, data) {

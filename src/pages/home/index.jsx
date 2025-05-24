@@ -3,10 +3,29 @@ import {Card, Col, Row, Table} from "antd";
 import imgUrl from "../../assets/image/logo.png";
 import "./index.less";
 import {getTableData} from "../../api/home/index.js";
-import {homeTalbeColumn} from "../../configs/tableConfig.jsx";
 import {getIcons} from "../../configs/countConfig.jsx";
 import CustomEcharts from "../../components/CustomEcharts/index.jsx";
 import {setBarChartOption, setLineChartOption, setPieChartOption} from "../../configs/echartConfig.js";
+
+// 设置表头
+const homeTalbeColumn = [
+	{
+		title: '姓名',
+		dataIndex: 'name',
+	},
+	{
+		title: '年龄',
+		dataIndex: 'age',
+	},
+	{
+		title: '身高',
+		dataIndex: 'height',
+	},
+	{
+		title: '体重',
+		dataIndex: 'weight',
+	},
+]
 
 const Home = () => {
 	// 获取表格数据
