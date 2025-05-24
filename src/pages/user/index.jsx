@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {getUserData} from "../../api/user";
-import {Button, message, Popconfirm, Table} from "antd";
+import {Button, message, Modal, Popconfirm, Table} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import Search from "antd/es/input/Search.js";
 import './index.less'
 
 const User = () => {
 	const [userData, setUserData] = useState([]);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [modalTitle, setModalTitle] = useState("");
 	
 	// 设置表头
 	const userTalbeColumn = [
@@ -34,12 +36,14 @@ const User = () => {
 		{
 			title: '操作',
 			render: (rowData) => {
-				// 编辑功能
-				function editItem(props) {
-					console.info(props);
+				// 处理编辑功能
+				function editTableItem() {
+					console.info(rowData);
+					setModalTitle('编辑')
+					setIsModalOpen(true)
 				}
 				
-				// 删除功能
+				// 处理删除功能
 				function deleteItem(type, props) {
 					console.info(props);
 					if (type && type === 'confirm') {
@@ -53,7 +57,7 @@ const User = () => {
 					<>
 						<Button
 							style={{marginRight: "10px"}}
-							onClick={() => editItem(rowData)}
+							onClick={() => editTableItem()}
 						>
 							编辑
 						</Button>
@@ -73,17 +77,16 @@ const User = () => {
 		}
 	]
 	
-	// 处理新增、编辑、删除功能
-	function tableAction(type, data) {
-		console.info(data)
-		switch (type) {
-			case 'add':
-				break
-			case 'edit':
-				break
-			case 'delete':
-				break
-		}
+	useEffect(() => {
+		getUserData().then((res) => {
+			setUserData(res.data.data.userData);
+		})
+	}, []);
+	
+	// 处理新增功能
+	function addTableItem() {
+		setModalTitle('新增')
+		setIsModalOpen(true)
 	}
 	
 	// 处理查询功能
@@ -91,14 +94,31 @@ const User = () => {
 		console.info('search');
 	}
 	
-	useEffect(() => {
-		getUserData().then((res) => {
-			setUserData(res.data.data.userData);
-		})
-	}, []);
+	// 处理弹窗确认事件
+	function handleOk() {
+		setIsModalOpen(false)
+	}
+	
+	// 处理弹窗取消事件
+	function handleCancel() {
+		setIsModalOpen(false)
+	}
 	
 	return (
 		<>
+			<Modal
+				title={modalTitle}
+				closable={{'aria-label': 'Custom Close Button'}}
+				cancelText='取消'
+				okText='确定'
+				open={isModalOpen}
+				onOk={handleOk}
+				onCancel={handleCancel}
+			>
+				<p>Some contents...</p>
+				<p>Some contents...</p>
+				<p>Some contents...</p>
+			</Modal>
 			<div className='user-form'>
 				<Search
 					style={{width: '20%'}}
@@ -112,19 +132,17 @@ const User = () => {
 					type="primary"
 					icon={<PlusOutlined/>}
 					size='large'
-					onClick={() => tableAction('add', '')}
+					onClick={() => addTableItem()}
 				>
 					新增
 				</Button>
 			</div>
 			<Table
-				// components={{body: { cell: EditableCell },}}
 				rowKey="key"
 				bordered
 				dataSource={userData}
 				columns={userTalbeColumn}
 				rowClassName="editable-row"
-				// pagination={{ onChange: cancel }}
 			/>
 		</>
 	);
