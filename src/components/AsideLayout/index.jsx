@@ -1,6 +1,6 @@
 import React from 'react';
 import {Layout, Menu} from "antd";
-import {useNavigate} from "react-router";
+import {useLocation, useNavigate} from "react-router";
 import asideItems from "../../configs/asideConfig.jsx";
 import {useSelector} from "react-redux";
 
@@ -8,6 +8,7 @@ const {Sider} = Layout;
 
 const AsideLayout = () => {
 	const isCollapsed = useSelector(state => state.menuFold.isCollapsed)
+	const {pathname} = useLocation();
 	
 	let navigate = useNavigate();
 	
@@ -25,10 +26,10 @@ const AsideLayout = () => {
 			</div>
 			<Menu
 				theme="dark"
-				defaultSelectedKeys={['1']}
+				selectedKeys={[pathname]}
 				mode="inline"
 				items={asideItems}
-				onClick={e => navigate(e.item.props.path)}
+				onClick={e => navigate(e.key)}
 			/>
 		</Sider>
 	);
