@@ -20,7 +20,7 @@ const asideItems = [
 	getItem('首页', '/home', <PieChartOutlined/>),
 	getItem('商品管理', '/mall', <DesktopOutlined/>),
 	getItem('用户管理', '/user', <UserOutlined/>),
-	getItem('其他', '', <FileOutlined/>, [
+	getItem('其他', '/others', <FileOutlined/>, [
 		getItem('Tom', '/others/page1', ''),
 		getItem('Bill', '/others/page2', '')
 	]),
