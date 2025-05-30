@@ -9,6 +9,7 @@ import User from "../pages/user/index";
 import Mall from "../pages/mall/index";
 import Page1 from "../pages/others/page1";
 import Page2 from "../pages/others/page2";
+import Login from "../pages/login/index.jsx";
 
 const routes = createBrowserRouter([
 	{
@@ -46,6 +47,10 @@ const routes = createBrowserRouter([
 				],
 			}
 		]
+	},
+	{
+		path: "/login",
+		Component: Login
 	}
 ])
 
